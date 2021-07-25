@@ -1,0 +1,58 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Clock</title>
+        <script src="./moment.js"></script>
+        <style>
+            .box {
+                padding-top: 124px;
+            }
+            #date {
+                font-size: 56px;
+                text-align: center;
+                font-weight: bold;
+            }
+            #time {
+                margin-top: 24px;
+                font-size: 124px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            #week {
+                margin-top: 24px;
+                font-size: 56px;
+                text-align: center;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <div id="date"></div>
+            <div id="time"></div>
+            <div id="week"></div>
+        </div>
+        <script>
+            function updateSecond() {
+                document.getElementById("time").innerText = moment()
+                    .utcOffset(8)
+                    .format("HH:mm:ss");
+                setTimeout(updateSecond, 1000);
+            }
+
+            window.onload = function () {
+                const curMoment = moment().utcOffset(8);
+                document.getElementById("time").innerText =
+                    curMoment.format("HH:mm:ss");
+                document.getElementById("date").innerText =
+                    curMoment.format("YYYY年MM月DD日");
+                document.getElementById("week").innerText =
+                    curMoment.format("dddd");
+                updateSecond();
+            };
+        </script>
+    </body>
+</html>
