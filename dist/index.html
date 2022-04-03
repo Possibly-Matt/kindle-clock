@@ -2,28 +2,32 @@
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=2.0" />
         <title>Clock</title>
         <script src="./moment.js"></script>
         <style>
             .box {
-                padding-top: 124px;
+                padding-top: 248px;
+                -webkit-transform: rotate(90deg);
+                -moz-transform: rotate(90deg);
+                -o-transform: rotate(90deg);
+                transform: rotate(90deg);
             }
             #date {
-                font-size: 56px;
+                font-size: 112px;
                 text-align: center;
                 font-weight: bold;
             }
             #time {
-                margin-top: 24px;
-                font-size: 124px;
+                margin-top: 48px;
+                font-size: 248px;
                 text-align: center;
                 font-weight: bold;
             }
 
             #week {
-                margin-top: 24px;
-                font-size: 56px;
+                margin-top: 48px;
+                font-size: 112px;
                 text-align: center;
                 font-weight: bold;
             }
@@ -38,17 +42,17 @@
         <script>
             function updateSecond() {
                 document.getElementById("time").innerText = moment()
-                    .utcOffset(8)
+                    .utcOffset(1)
                     .format("HH:mm:ss");
                 setTimeout(updateSecond, 1000);
             }
 
             window.onload = function () {
-                const curMoment = moment().utcOffset(8);
+                const curMoment = moment().utcOffset(1);
                 document.getElementById("time").innerText =
                     curMoment.format("HH:mm:ss");
                 document.getElementById("date").innerText =
-                    curMoment.format("YYYY年MM月DD日");
+                    curMoment.format("YYYY-MM-DD");
                 document.getElementById("week").innerText =
                     curMoment.format("dddd");
                 updateSecond();
